@@ -17,7 +17,7 @@ public class Pasarela{
 				}
 			}
 			caminandoDir0++;
-			System.out.println("Entró uno en la dirección 0");
+			System.out.println("Entrï¿½ uno en la direcciï¿½n 0");
 		}
 
 		else {
@@ -29,7 +29,7 @@ public class Pasarela{
 				}
 			}
 			caminandoDir1++;
-			System.out.println("Entró uno en la dirección 1");
+			System.out.println("Entrï¿½ uno en la direcciï¿½n 1");
 		}
 
 	}
@@ -37,7 +37,7 @@ public class Pasarela{
 	
 	public void caminar () {
 			try {
-				Thread.sleep(5);
+				Thread.sleep(1000);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -46,31 +46,27 @@ public class Pasarela{
 	public synchronized void salir() {
 		if (caminandoDir0 == 0) {
 			caminandoDir1--;
-			System.out.println("Salió uno en la dirección 1");
+			System.out.println("Saliï¿½ uno en la direcciï¿½n 1");
 			
 			if (caminandoDir1 == 0) {
 				notifyAll();
 			}
-			else {
-				notify();
-			}
+			// TODO: Al dar notify() estas sacando una de la direcciÃ³n contraria a intentar pasar
+			//       Esto deberia darse unicamente cuando todos los de la direcciÃ³n actual pasen.
+			//else {
+			//	notify();
+			//}
 		} 
 		else {
 			caminandoDir0--;
-			System.out.println("Salió uno en la dirección 0");
+			System.out.println("Saliï¿½ uno en la direcciï¿½n 0");
 			if (caminandoDir0 == 0) {
 				notifyAll();
 			}
-			else {
-				notify();
-			}
+			//else {
+			//	notify();
+			//}
 		}
 		
 	}
-	
-	
-	
-
-
-
 }
