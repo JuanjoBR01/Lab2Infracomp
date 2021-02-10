@@ -23,10 +23,8 @@ public class Persona extends Thread{
 		
 		pista = new Pasarela();
 		
-		for (int i = 0; i < 20; i++) 
-			new Persona(i,(int)(Math.random()*2)).start();
+		for (int i = 0; i < 6; i++)
+			new Persona(i, i % 2).start();
 		
 	}
-
-	
 }
